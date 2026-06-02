@@ -6,7 +6,7 @@ on:
     branches: [master, main]
 
 permissions:
-  contents: write
+  contents: write   # required for version bump commit and release tag
 
 jobs:
   publish_stable:

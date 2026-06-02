@@ -1,13 +1,16 @@
-name: Coverage
+name: Code Coverage
 
 on:
   pull_request:
-    branches: [dev, master]
+    branches: [dev]
   workflow_dispatch:
 
 jobs:
   coverage:
     uses: OpenVoiceOS/gh-automations/.github/workflows/coverage.yml@dev
     with:
+      python_version: '3.11'
+      coverage_source: 'pyshazam'
+      test_path: 'tests/'
       install_extras: 'dev'
-      test_path: 'tests'
+      min_coverage: 0
