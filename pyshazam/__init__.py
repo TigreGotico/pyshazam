@@ -1,6 +1,5 @@
 from .client import ShazamClient
 from .models import (
-    Artist,
     HubProvider,
     RecognitionResult,
     SectionMetaPage,
@@ -27,5 +26,4 @@ __all__ = [
     "TrackSection",
     "SectionMetaPage",
     "TrackMatch",
-    "Artist",
 ]

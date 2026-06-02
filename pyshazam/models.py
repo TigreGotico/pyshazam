@@ -267,7 +267,13 @@ class RecognitionResult:
 
     @classmethod
     def from_dict(cls, d: dict) -> "RecognitionResult":
-        track = Track.from_dict(d.get("track", {})) if d.get("track") else None
+        raw_track = d.get("track", {})
+        if raw_track:
+            # Matches live at the top level of the discovery response, not inside track
+            raw_track["matches"] = d.get("matches", [])
+            track = Track.from_dict(raw_track)
+        else:
+            track = None
         return cls(
             track=track,
             location=d.get("location", {}),
