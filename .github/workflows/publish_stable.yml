@@ -6,6 +6,9 @@ on:
 
 jobs:
   publish_stable:
+    permissions:
+      contents: write
+      id-token: write
     uses: OpenVoiceOS/gh-automations/.github/workflows/publish-stable.yml@dev
     secrets:
       PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
