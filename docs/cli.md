@@ -1,6 +1,6 @@
 # CLI Reference
 
-The CLI is located in `apps/pyshazam-cli/main.py` and wraps the `pyshazam` library for quick shell usage.
+The CLI is located in `apps/xazam-cli/main.py` and wraps the `xazam` library for quick shell usage.
 
 ## Commands
 
@@ -9,7 +9,7 @@ The CLI is located in `apps/pyshazam-cli/main.py` and wraps the `pyshazam` libra
 Recognise a track from an audio file.
 
 ```bash
-python -m pyshazam_cli identify --file <path>
+python -m xazam_cli identify --file <path>
 ```
 
 **Options**
@@ -21,7 +21,7 @@ python -m pyshazam_cli identify --file <path>
 **Example**
 
 ```bash
-python -m pyshazam_cli identify --file "song.mp3"
+python -m xazam_cli identify --file "song.mp3"
 ```
 
 **Output**
@@ -42,7 +42,7 @@ No matches found.
 Resolve an artist name from a Shazam artist ID and print catalog metadata.
 
 ```bash
-python -m pyshazam_cli scrape --artist-id <id>
+python -m xazam_cli scrape --artist-id <id>
 ```
 
 **Options**
@@ -54,7 +54,7 @@ python -m pyshazam_cli scrape --artist-id <id>
 **Example**
 
 ```bash
-python -m pyshazam_cli scrape --artist-id 3996865
+python -m xazam_cli scrape --artist-id 3996865
 ```
 
 **Output**
@@ -75,4 +75,4 @@ URL: https://music.apple.com/gb/artist/metallica/3996865
 
 ## Extending the CLI
 
-The CLI is intentionally minimal. To add a `--json` flag or `--verbose` mode, modify `apps/pyshazam-cli/main.py` and pass the flag into the `identify()` / `scrape()` coroutines.
+The CLI is intentionally minimal. To add a `--json` flag or `--verbose` mode, modify `apps/xazam-cli/main.py` and pass the flag into the `identify()` / `scrape()` coroutines.

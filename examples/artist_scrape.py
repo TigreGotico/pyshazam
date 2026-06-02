@@ -4,13 +4,13 @@ Usage:
     python artist_scrape.py 3996865
 
 Requires:
-    pip install pyshazam
+    pip install xazam
 """
 
 import asyncio
 import sys
 
-from pyshazam import ShazamScraper, ShazamTransport
+from xazam import ShazamScraper, ShazamTransport
 
 
 async def main(artist_id: str):

@@ -4,14 +4,14 @@ Usage:
     python basic_identify.py song.mp3
 
 Requires:
-    pip install pyshazam
+    pip install xazam
 """
 
 import asyncio
 import sys
 from pathlib import Path
 
-from pyshazam import ShazamClient, ShazamTransport
+from xazam import ShazamClient, ShazamTransport
 
 
 async def main(path: str):

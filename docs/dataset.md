@@ -1,6 +1,6 @@
 # Data Products
 
-Every API client in this organisation is also a dataset construction pipeline. This document describes what `pyshazam` can produce, what is safe and useful to publish, and the downstream ML tasks the data serves.
+Every API client in this organisation is also a dataset construction pipeline. This document describes what `xazam` can produce, what is safe and useful to publish, and the downstream ML tasks the data serves.
 
 ## 1. Datasets the Client Can Produce
 

@@ -19,9 +19,10 @@ jobs:
       MATRIX_TOKEN: ${{ secrets.MATRIX_TOKEN }}
     with:
       branch: 'dev'
-      version_file: 'pyshazam/version.py'
+      version_file: 'xazam/version.py'
       update_changelog: true
       publish_prerelease: true
       propose_release: true
+      changelog_max_issues: 50
       publish_pypi: true
       notify_matrix: true

@@ -1,6 +1,6 @@
 # Reverse-Engineered Shazam API Reference
 
-This document describes the HTTP endpoints that `pyshazam` interacts with. No official API key is required; authentication is implicit via mobile-app headers and audio fingerprinting.
+This document describes the HTTP endpoints that `xazam` interacts with. No official API key is required; authentication is implicit via mobile-app headers and audio fingerprinting.
 
 ## Base URLs
 

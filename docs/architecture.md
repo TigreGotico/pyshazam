@@ -3,7 +3,7 @@
 ## Module Overview
 
 ```
-pyshazam/
+xazam/
 ├── __init__.py      # Public exports: ShazamClient, ShazamScraper, ShazamTransport, Track, Artist
 ├── client.py        # ShazamClient — high-level track identification
 ├── scraper.py       # ShazamScraper — artist name resolution + catalog search

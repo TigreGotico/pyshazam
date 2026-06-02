@@ -21,7 +21,7 @@ models — no more raw dict drilling.
 
 ```python
 import asyncio
-from pyshazam import ShazamClient, ShazamTransport
+from xazam import ShazamClient, ShazamTransport
 
 async def main():
     with open("song.mp3", "rb") as f:
@@ -87,7 +87,7 @@ Resolve an artist name from their Shazam ID and fetch Apple Music catalog data.
 
 ```python
 import asyncio
-from pyshazam import ShazamScraper, ShazamTransport
+from xazam import ShazamScraper, ShazamTransport
 
 async def main():
     async with ShazamTransport() as transport:

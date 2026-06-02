@@ -1,4 +1,4 @@
-# pyshazam Examples
+# xazam Examples
 
 ## basic_identify.py
 
