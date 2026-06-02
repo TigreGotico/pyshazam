@@ -18,7 +18,7 @@ pip install -e ".[dev]"
 
 ## Quick start
 
-### Identify a track
+### Identify a track (typed API — recommended)
 
 ```python
 import asyncio
@@ -30,11 +30,40 @@ async def main():
 
     async with ShazamTransport() as transport:
         client = ShazamClient(transport)
-        result = await client.identify_track(audio)
+        result = await client.identify(audio)
 
-    print(result["track"]["title"], "—", result["track"]["subtitle"])
+    if result.matched:
+        track = result.track
+        print(f"{track.title} — {track.subtitle}")
+        print(f"Cover art: {track.cover_art}")
+        print(f"Apple Music: {track.apple_music_url}")
+        print(f"Spotify: {track.spotify_uri}")
+        print(f"Lyrics: {track.lyrics[:200]}...")
+    else:
+        print("No match")
 
 asyncio.run(main())
+```
+
+### Fetch extra track metadata
+
+After identification, query the track detail endpoint for lyrics, related
+videos, and extended metadata:
+
+```python
+    extra = await client.get_track_info(track.key)
+    print(extra.metadata_table)   # {'Album': '…', 'Released': '…', 'Label': '…'}
+    print(extra.related_videos)    # ['https://youtube.com/watch?v=…', ...]
+```
+
+### Identify a track (legacy raw-dict API)
+
+`identify_track()` still returns the raw Shazam JSON for backwards
+compatibility:
+
+```python
+    result = await client.identify_track(audio)
+    print(result["track"]["title"], "—", result["track"]["subtitle"])
 ```
 
 ### Scrape artist metadata
