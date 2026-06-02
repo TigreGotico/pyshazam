@@ -1,10 +1,10 @@
 [build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
 
 [project]
 name = "pyshazam"
-version = "0.1.0"
+dynamic = ["version"]
 description = "A modular, async Python client for the Shazam API"
 readme = "README.md"
 license = {text = "MIT"}
@@ -23,5 +23,15 @@ dev = [
     "pytest-asyncio>=0.21",
 ]
 
-[tool.hatch.build.targets.wheel]
-packages = ["pyshazam"]
+[project.urls]
+Homepage = "https://github.com/TigreGotico/pyshazam"
+Repository = "https://github.com/TigreGotico/pyshazam"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+include = ["pyshazam*"]
+
+[tool.setuptools.dynamic]
+version = {attr = "pyshazam.version.__version__"}

@@ -1,0 +1,14 @@
+name: Publish Stable
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  publish_stable:
+    uses: OpenVoiceOS/gh-automations/.github/workflows/publish-stable.yml@dev
+    secrets: inherit
+    with:
+      branch: 'master'
+      version_file: 'pyshazam/version.py'
+      publish_pypi: true

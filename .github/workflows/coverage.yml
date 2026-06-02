@@ -1,0 +1,14 @@
+name: Coverage
+
+on:
+  pull_request:
+    branches: [dev, master]
+  workflow_dispatch:
+
+jobs:
+  coverage:
+    uses: OpenVoiceOS/gh-automations/.github/workflows/coverage.yml@dev
+    secrets: inherit
+    with:
+      install_extras: 'dev'
+      test_path: 'tests'
