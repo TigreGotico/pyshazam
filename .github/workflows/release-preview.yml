@@ -9,5 +9,5 @@ jobs:
   release_preview:
     uses: OpenVoiceOS/gh-automations/.github/workflows/release-preview.yml@dev
     with:
-      package_name: 'shazampy'
-      version_file: 'shazampy/version.py'
+      package_name: 'xazam'
+      version_file: 'xazam/version.py'

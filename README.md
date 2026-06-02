@@ -1,4 +1,4 @@
-# shazampy
+# xazam
 
 A modular, async Python client for the Shazam API, built on top of `shazamio_core` for robust audio fingerprinting.
 
@@ -22,7 +22,7 @@ pip install -e ".[dev]"
 
 ```python
 import asyncio
-from shazampy import ShazamClient, ShazamTransport
+from xazam import ShazamClient, ShazamTransport
 
 async def main():
     with open("song.mp3", "rb") as f:
@@ -70,7 +70,7 @@ compatibility:
 
 ```python
 import asyncio
-from shazampy import ShazamScraper, ShazamTransport
+from xazam import ShazamScraper, ShazamTransport
 
 async def main():
     async with ShazamTransport() as transport:
@@ -87,10 +87,10 @@ asyncio.run(main())
 
 ```bash
 # Identify a file
-python -m shazampy_cli identify --file song.mp3
+python -m xazam_cli identify --file song.mp3
 
 # Scrape artist metadata
-python -m shazampy_cli scrape --artist-id 3996865
+python -m xazam_cli scrape --artist-id 3996865
 ```
 
 ## Tests
