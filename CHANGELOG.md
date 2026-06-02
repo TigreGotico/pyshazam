@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.1a2](https://github.com/TigreGotico/pyshazam/tree/0.1.1a2) (2026-06-02)
+
+[Full Changelog](https://github.com/TigreGotico/pyshazam/compare/0.1.1a1...0.1.1a2)
+
 ## [0.1.1a1](https://github.com/TigreGotico/pyshazam/tree/0.1.1a1) (2026-06-02)
 
 [Full Changelog](https://github.com/TigreGotico/pyshazam/compare/e2c7a77e1a542fef54eb0fd0aeb660d6a861b817...0.1.1a1)
