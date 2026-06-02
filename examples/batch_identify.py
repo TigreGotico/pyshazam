@@ -4,7 +4,7 @@ Usage:
     python batch_identify.py /path/to/music/
 
 Requires:
-    pip install pyshazam tqdm
+    pip install shazampy tqdm
 """
 
 import asyncio
@@ -13,7 +13,7 @@ from pathlib import Path
 
 from tqdm import tqdm
 
-from pyshazam import ShazamClient, ShazamTransport
+from shazampy import ShazamClient, ShazamTransport
 
 EXTENSIONS = {".mp3", ".wav", ".flac", ".m4a", ".ogg"}
 

@@ -1,6 +1,6 @@
-# pyshazam Documentation
+# shazampy Documentation
 
-This directory contains the full documentation for the `pyshazam` library and CLI.
+This directory contains the full documentation for the `shazampy` library and CLI.
 
 ## Contents
 
@@ -16,7 +16,7 @@ Install the library and run a live identification:
 
 ```bash
 pip install -e .
-python -m pyshazam_cli identify --file song.mp3
+python -m shazampy_cli identify --file song.mp3
 ```
 
 See [`usage.md`](usage.md) for programmatic examples.

@@ -7,7 +7,7 @@ Usage:
 import asyncio
 import sys
 
-from pyshazam import ShazamClient, ShazamTransport
+from shazampy import ShazamClient, ShazamTransport
 
 
 async def main(path: str):

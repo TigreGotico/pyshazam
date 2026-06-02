@@ -3,7 +3,7 @@ requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "pyshazam"
+name = "shazampy"
 dynamic = ["version"]
 description = "A modular, async Python client for the Shazam API"
 readme = "README.md"
@@ -24,14 +24,14 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/TigreGotico/pyshazam"
-Repository = "https://github.com/TigreGotico/pyshazam"
+Homepage = "https://github.com/TigreGotico/shazampy"
+Repository = "https://github.com/TigreGotico/shazampy"
 
 [tool.setuptools]
 include-package-data = true
 
 [tool.setuptools.packages.find]
-include = ["pyshazam*"]
+include = ["shazampy*"]
 
 [tool.setuptools.dynamic]
-version = {attr = "pyshazam.version.__version__"}
+version = {attr = "shazampy.version.__version__"}

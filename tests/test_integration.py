@@ -3,7 +3,7 @@ import json
 import os
 import pytest
 
-from pyshazam import (
+from shazampy import (
     ShazamClient,
     ShazamTransport,
     ShazamScraper,
