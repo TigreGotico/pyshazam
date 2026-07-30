@@ -75,4 +75,7 @@ URL: https://music.apple.com/gb/artist/metallica/3996865
 
 ## Extending the CLI
 
-The CLI is intentionally minimal. To add a `--json` flag or `--verbose` mode, modify `apps/xazam-cli/main.py` and pass the flag into the `identify()` / `scrape()` coroutines.
+The CLI is intentionally minimal. To add a `--json` flag or a `--verbose` mode, modify `apps/xazam-cli/main.py` and pass the flag into the `identify()` and `scrape()` coroutines.
+
+---
+[← Usage Guide](usage.md) · [Home](README.md) · [API Reference →](api.md)

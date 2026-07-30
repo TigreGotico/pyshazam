@@ -44,7 +44,7 @@ JSON response -> { matches: [...], track: {...} }
 Key design decisions:
 
 - `shazamio_core` (Rust) is treated as a black-box fingerprint engine. The Python side never manipulates raw audio samples or signature math.
-- The `timestamp` returned by `shazamio_core` is forwarded verbatim; it is **not** regenerated from `time.time()`.
+- The `timestamp` returned by `shazamio_core` is forwarded verbatim. It is **not** regenerated from `time.time()`.
 - Query-string parameters (`sync`, `webv3`, `sampling`, etc.) are hard-coded to match the current mobile-app contract.
 
 ## Data Flow: Artist Metadata Scraping
@@ -75,7 +75,7 @@ Apple Music catalog JSON -> { results: { artists: { data: [...] } } }
 Key design decisions:
 
 - The artist page (`shazam.com/artist/_/...`) and the catalog API (`services/amapi/...`) require **different** header personas. The scraper uses a dedicated session for the HTML page and the shared transport for the API.
-- The catalog search endpoint is strict about `User-Agent`. Modern desktop UAs trigger `405`; the transport only rotates legacy mobile-app UAs.
+- The catalog search endpoint is strict about `User-Agent`. Modern desktop UAs trigger `405`, so the transport only rotates legacy mobile-app UAs.
 
 ## Header Strategy
 
@@ -83,7 +83,7 @@ Key design decisions:
 |----------|------------------|-----------|
 | `amp.shazam.com/discovery/v5/...` | Mobile app (`X-Shazam-Platform`, legacy UA) | Fingerprinting endpoint expects a native client. |
 | `www.shazam.com/services/amapi/...` | Mobile app (legacy UA) | Rejects modern desktop UAs with `405`. |
-| `www.shazam.com/artist/_/...` | Browser (`Accept: text/html`, generic UA) | HTML page serving; needs to look like a normal browser. |
+| `www.shazam.com/artist/_/...` | Browser (`Accept: text/html`, generic UA) | HTML page serving. Needs to look like a normal browser. |
 
 `ShazamTransport.common_headers()` returns the mobile-app persona. The scraper overrides this for the HTML step only.
 
@@ -100,8 +100,8 @@ On enter it creates an `aiohttp.ClientSession`. On exit it closes it. If used ou
 
 The transport exposes two helpers:
 
-- `request(method, url, headers, **kwargs)` — JSON API wrapper; raises on non-200.
-- `get_text(url, headers, **kwargs)` — Plain-text wrapper for HTML scraping.
+- `request(method, url, headers, **kwargs)`: JSON API wrapper. Raises on non-200.
+- `get_text(url, headers, **kwargs)`: plain-text wrapper for HTML scraping.
 
 ## Models
 
@@ -118,9 +118,12 @@ class Track:
     artist: Optional[Artist] = None
 ```
 
-These are lightweight value objects. The library currently returns raw dicts from the API; the dataclasses are reserved for future typed wrappers.
+These are lightweight value objects. The library currently returns raw dicts from the API. The dataclasses are reserved for future typed wrappers.
 
 ## Testing Strategy
 
-- **Live integration tests** (`tests/test_integration.py`) exercise the real API with a known audio file and artist ID. They are gated by `pytest.mark.skipif` when the test audio is absent.
-- **No mocked unit tests yet.** Because the API is reverse-engineered and may change, live tests are the primary source of truth. Mock-based unit tests can be added for offline CI if needed.
+- **Live integration tests** (`tests/test_integration.py`) run against the real API with a known audio file and artist ID. `pytest.mark.skipif` skips them when the test audio is absent.
+- **No mocked unit tests yet.** The API is reverse-engineered and may change, so live tests are the primary source of truth. Mock-based unit tests can be added for offline CI if needed.
+
+---
+[← API Reference](api.md) · [Home](README.md) · [Data Products →](dataset.md)

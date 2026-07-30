@@ -1,6 +1,6 @@
 # Reverse-Engineered Shazam API Reference
 
-This document describes the HTTP endpoints that `xazam` interacts with. No official API key is required; authentication is implicit via mobile-app headers and audio fingerprinting.
+This document describes the HTTP endpoints that `xazam` uses. No official API key is required. Authentication is implicit, through mobile-app headers and audio fingerprinting.
 
 ## Base URLs
 
@@ -180,7 +180,7 @@ User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36
 Accept: text/html
 ```
 
-**Response** (`200 OK`) — raw HTML.
+**Response** (`200 OK`): raw HTML.
 
 The artist name is extracted with the regex:
 
@@ -230,7 +230,7 @@ https://www.shazam.com/services/charts/csv/{chart_path}
 | `genre/world/{genre_url_name}` | Global genre chart |
 | `genre/{country_url_name}/{genre_url_name}` | Country genre chart |
 
-**Response** (`200 OK`) — `text/csv` with header row.
+**Response** (`200 OK`): `text/csv` with header row.
 
 ## 6. Track Information
 
@@ -242,7 +242,7 @@ https://www.shazam.com/services/charts/csv/{chart_path}
 https://www.shazam.com/discovery/v5/{language}/{country}/web/-/track/{track_id}?shazamapiversion=v3&video=v3
 ```
 
-**Response** (`200 OK`) — track metadata in the same schema as the recognition response.
+**Response** (`200 OK`): track metadata in the same schema as the recognition response.
 
 ## 7. Related / Similar Tracks
 
@@ -254,7 +254,7 @@ https://www.shazam.com/discovery/v5/{language}/{country}/web/-/track/{track_id}?
 https://cdn.shazam.com/shazam/v3/{language}/{country}/web/-/tracks/track-similarities-id-{track_id}?startFrom={offset}&pageSize={limit}&connected=&channel=
 ```
 
-**Response** (`200 OK`) — list of similar tracks.
+**Response** (`200 OK`): list of similar tracks.
 
 ## Deprecated / Broken Endpoints
 
@@ -274,11 +274,14 @@ The following endpoints used to work but are now shut down by Shazam (returning 
 | `200` | OK | Request succeeded. |
 | `404` | Not Found | Deprecated endpoint or bad artist/track ID. |
 | `405` | Not allowed. | Wrong `User-Agent` (desktop/browser) or wrong method/endpoint. |
-| `429` | Too Many Requests | Rate limit exceeded; back off. |
-| `500`/`502`/`503`/`504` | Server error | Transient; retry with exponential backoff. |
+| `429` | Too Many Requests | Rate limit exceeded. Back off. |
+| `500`/`502`/`503`/`504` | Server error | Transient. Retry with exponential backoff. |
 
 ## Notes
 
 - `shazamio_core` (Rust) handles all audio decoding and fingerprint generation. The Python layer only forwards the base64 `uri` and `samplems`.
-- The `timestamp` field in the recognition payload must match the value returned by `shazamio_core`; it is **not** the current Unix time.
-- Shazam appears to enforce UA-based ACLs on some endpoints but not others. Always use the legacy mobile-app pool for consistency.
+- The `timestamp` field in the recognition payload must match the value returned by `shazamio_core`. It is not the current Unix time.
+- Shazam enforces user-agent-based access control on some endpoints but not others. Always use the legacy mobile-app pool for consistency.
+
+---
+[← CLI Reference](cli.md) · [Home](README.md) · [Architecture →](architecture.md)
