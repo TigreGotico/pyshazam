@@ -1,12 +1,12 @@
 # xazam
 
-A modular, async Python client for the Shazam API, built on top of `shazamio_core` for robust audio fingerprinting.
+`xazam` is an async Python client for the Shazam API. It uses `shazamio_core` for audio fingerprinting, and adds track identification and artist metadata scraping on top.
 
 ## Features
 
-- **Track identification** — send audio bytes and get back track metadata.
-- **Artist metadata scraping** — resolve artist pages and query the Apple Music catalog proxy.
-- **Modular transport** — `ShazamTransport` handles headers and sessions; `ShazamClient` and `ShazamScraper` build on top of it.
+- **Track identification**: send audio bytes and get track metadata back.
+- **Artist metadata scraping**: resolve artist pages and query the Apple Music catalog proxy.
+- **Modular transport**: `ShazamTransport` handles headers and sessions. `ShazamClient` and `ShazamScraper` build on top of it.
 
 ## Install
 
@@ -18,7 +18,7 @@ pip install -e ".[dev]"
 
 ## Quick start
 
-### Identify a track (typed API — recommended)
+### Identify a track (typed API: recommended)
 
 ```python
 import asyncio
@@ -58,7 +58,7 @@ videos, and extended metadata:
 
 ### Identify a track (legacy raw-dict API)
 
-`identify_track()` still returns the raw Shazam JSON for backwards
+`identify_track()` still returns the raw Shazam JSON, for backward
 compatibility:
 
 ```python
@@ -93,9 +93,12 @@ python -m xazam_cli identify --file song.mp3
 python -m xazam_cli scrape --artist-id 3996865
 ```
 
+See [docs/cli.md](docs/cli.md) for the full command reference.
+
 ## Tests
 
-Live integration tests hit the real Shazam API. Set a custom audio file via the environment:
+Live integration tests hit the real Shazam API. Set a custom audio file with
+an environment variable:
 
 ```bash
 export SHAZAMPY_TEST_AUDIO="/path/to/track.mp3"
@@ -106,15 +109,30 @@ pytest tests/test_integration.py -v
 
 | Module | Purpose |
 |--------|---------|
-| `client.py` | `ShazamClient` — high-level track identification |
-| `scraper.py` | `ShazamScraper` — artist name resolution + catalog search |
-| `transport.py` | `ShazamTransport` — aiohttp sessions, headers, request helpers |
+| `client.py` | `ShazamClient`: high-level track identification |
+| `scraper.py` | `ShazamScraper`: artist name resolution and catalog search |
+| `transport.py` | `ShazamTransport`: aiohttp sessions, headers, request helpers |
 | `models.py` | `Track`, `Artist` dataclasses |
+
+See [docs/architecture.md](docs/architecture.md) for the full data flow.
 
 ## Status
 
-- ✅ Artist metadata scraping (405 resolved via dedicated web-page session)
-- ✅ Track identification (matches returned correctly via `shazamio_core` fingerprinting)
+- Artist metadata scraping works (405 errors resolved with a dedicated web-page session).
+- Track identification works (matches return correctly through `shazamio_core` fingerprinting).
+
+## Related projects
+
+- [TigreGotico/pyshazam](https://github.com/TigreGotico/pyshazam): the package that `xazam` was renamed from on PyPI.
+- [TigreGotico/shazam2mqtt](https://github.com/TigreGotico/shazam2mqtt): a Dockerized bridge that uses `xazam` to identify music from a microphone and publish results to MQTT.
+
+## Documentation
+
+- [docs/usage.md](docs/usage.md): library usage and error handling
+- [docs/cli.md](docs/cli.md): command-line reference
+- [docs/api.md](docs/api.md): reverse-engineered Shazam API reference
+- [docs/architecture.md](docs/architecture.md): internal design and data flow
+- [docs/dataset.md](docs/dataset.md): data products and their suitability for publication
 
 ## License
 
