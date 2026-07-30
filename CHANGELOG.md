@@ -1,12 +1,12 @@
 # Changelog
 
-## [0.1.2a2](https://github.com/TigreGotico/pyshazam/tree/0.1.2a2) (2026-06-02)
+## [0.1.3a1](https://github.com/TigreGotico/xazam/tree/0.1.3a1) (2026-07-30)
 
-[Full Changelog](https://github.com/TigreGotico/pyshazam/compare/0.1.2a1...0.1.2a2)
+[Full Changelog](https://github.com/TigreGotico/xazam/compare/0.1.2...0.1.3a1)
 
-## [0.1.2a1](https://github.com/TigreGotico/pyshazam/tree/0.1.2a1) (2026-06-02)
+**Merged pull requests:**
 
-[Full Changelog](https://github.com/TigreGotico/pyshazam/compare/0.1.1...0.1.2a1)
+- docs: rewrite README in Simplified Technical English [\#6](https://github.com/TigreGotico/xazam/pull/6) ([JarbasAl](https://github.com/JarbasAl))
 
 
 

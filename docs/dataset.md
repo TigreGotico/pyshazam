@@ -1,6 +1,6 @@
 # Data Products
 
-Every API client in this organisation is also a dataset construction pipeline. This document describes what `xazam` can produce, what is safe and useful to publish, and the downstream ML tasks the data serves.
+Every API client in this organization also works as a dataset construction pipeline. This document describes what `xazam` can produce, what is safe and useful to publish, and the downstream ML tasks the data serves.
 
 ## 1. Datasets the Client Can Produce
 
@@ -78,17 +78,20 @@ rank,title,subtitle,track_id
 
 ## 4. Implementation Plan
 
-A `dataset.py` module (mirroring `clients/archives/*` patterns) should be added to dump the above datasets:
+A `dataset.py` module (mirroring `clients/archives/*` patterns) should dump the datasets above:
 
-- **Resumable:** Store last-seen chart path / date / offset in a state file.
-- **Polite:** Add `asyncio.sleep(0.5)` between requests; cap concurrent connections.
-- **Incremental:** Only fetch changed charts since the last run.
-- **Output format:** Markdown tables for human review + JSONL for machine consumption.
-- **Run location:** Heavy bulk crawls should execute on `/mnt/homelab` (sshfs bulk tier) to conserve local SSD.
+- **Resumable:** store the last-seen chart path, date, and offset in a state file.
+- **Polite:** add `asyncio.sleep(0.5)` between requests, and cap concurrent connections.
+- **Incremental:** fetch only charts that changed since the last run.
+- **Output format:** Markdown tables for human review, plus JSONL for machine consumption.
+- **Run location:** run heavy bulk crawls on `/mnt/homelab` (sshfs bulk tier) to save local SSD space.
 
-## 5. Legal / ToS Considerations
+## 5. Legal and ToS considerations
 
 - Shazam and Apple Music data are governed by their respective Terms of Service.
-- **Do not** scrape at high velocity; stay well below any perceptible rate limit.
-- **Do not** redistribute audio, artwork files, or fingerprint signatures.
-- **Do** redistribute factual chart rankings and structured metadata, which are not copyrightable in most jurisdictions.
+- Do not scrape at high velocity. Stay well below any perceptible rate limit.
+- Do not redistribute audio, artwork files, or fingerprint signatures.
+- Redistribute factual chart rankings and structured metadata; these are not copyrightable in most jurisdictions.
+
+---
+[← Architecture](architecture.md) · [Home](README.md)

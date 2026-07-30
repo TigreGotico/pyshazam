@@ -17,7 +17,7 @@ Dependencies: `aiohttp`, `shazamio_core`.
 ### Typed API (recommended)
 
 `ShazamClient.identify()` returns a typed `RecognitionResult` with rich
-models — no more raw dict drilling.
+models, so you no longer need to drill into raw dicts.
 
 ```python
 import asyncio
@@ -139,7 +139,7 @@ except ClientResponseError as exc:
 
 `ShazamTransport` is an async context manager and will close its `aiohttp.ClientSession` on exit. If you use it without `async with`, remember to call `await transport.session.close()` manually.
 
-## Live Integration Tests
+## Live integration tests
 
 The repository includes live tests that hit the real API:
 
@@ -148,7 +148,7 @@ export PYSHAZAM_TEST_AUDIO="/path/to/track.mp3"
 pytest tests/test_integration.py -v
 ```
 
-If `PYSHAZAM_TEST_AUDIO` is not set, a default path is used; the test is skipped if the file does not exist.
+If `PYSHAZAM_TEST_AUDIO` is not set, the test uses a default path. The test is skipped if the file does not exist.
 
 ## Model Reference
 
@@ -165,3 +165,6 @@ If `PYSHAZAM_TEST_AUDIO` is not set, a default path is used; the test is skipped
 
 All models expose `.from_dict(raw)` for manual parsing and are plain
 `@dataclass` objects with sensible defaults.
+
+---
+[Home](README.md) · [CLI Reference →](cli.md)
