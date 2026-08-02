@@ -1,12 +1,20 @@
 # Changelog
 
-## [0.1.3a1](https://github.com/TigreGotico/xazam/tree/0.1.3a1) (2026-07-30)
+## [0.1.3a2](https://github.com/LeMetadatarr/xazam/tree/0.1.3a2) (2026-08-02)
 
-[Full Changelog](https://github.com/TigreGotico/xazam/compare/0.1.2...0.1.3a1)
+[Full Changelog](https://github.com/LeMetadatarr/xazam/compare/0.1.3a1...0.1.3a2)
 
 **Merged pull requests:**
 
-- docs: rewrite README in Simplified Technical English [\#6](https://github.com/TigreGotico/xazam/pull/6) ([JarbasAl](https://github.com/JarbasAl))
+- docs: QA pass — accuracy, org-move URLs, related projects [\#8](https://github.com/LeMetadatarr/xazam/pull/8) ([JarbasAl](https://github.com/JarbasAl))
+
+## [0.1.3a1](https://github.com/LeMetadatarr/xazam/tree/0.1.3a1) (2026-07-30)
+
+[Full Changelog](https://github.com/LeMetadatarr/xazam/compare/0.1.2...0.1.3a1)
+
+**Merged pull requests:**
+
+- docs: rewrite README in Simplified Technical English [\#6](https://github.com/LeMetadatarr/xazam/pull/6) ([JarbasAl](https://github.com/JarbasAl))
 
 
 
