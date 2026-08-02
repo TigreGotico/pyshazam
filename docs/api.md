@@ -284,4 +284,4 @@ The following endpoints used to work but are now shut down by Shazam (returning 
 - Shazam enforces user-agent-based access control on some endpoints but not others. Always use the legacy mobile-app pool for consistency.
 
 ---
-[← CLI Reference](cli.md) · [Home](README.md) · [Architecture →](architecture.md)
+[← Usage Guide](usage.md) · [Home](README.md) · [Architecture →](architecture.md)

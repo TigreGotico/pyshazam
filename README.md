@@ -83,25 +83,13 @@ async def main():
 asyncio.run(main())
 ```
 
-## CLI
-
-```bash
-# Identify a file
-python -m xazam_cli identify --file song.mp3
-
-# Scrape artist metadata
-python -m xazam_cli scrape --artist-id 3996865
-```
-
-See [docs/cli.md](docs/cli.md) for the full command reference.
-
 ## Tests
 
 Live integration tests hit the real Shazam API. Set a custom audio file with
 an environment variable:
 
 ```bash
-export SHAZAMPY_TEST_AUDIO="/path/to/track.mp3"
+export PYSHAZAM_TEST_AUDIO="/path/to/track.mp3"
 pytest tests/test_integration.py -v
 ```
 
@@ -112,24 +100,22 @@ pytest tests/test_integration.py -v
 | `client.py` | `ShazamClient`: high-level track identification |
 | `scraper.py` | `ShazamScraper`: artist name resolution and catalog search |
 | `transport.py` | `ShazamTransport`: aiohttp sessions, headers, request helpers |
-| `models.py` | `Track`, `Artist` dataclasses |
+| `models.py` | `RecognitionResult`, `Track`, and supporting dataclasses |
 
 See [docs/architecture.md](docs/architecture.md) for the full data flow.
 
 ## Status
 
-- Artist metadata scraping works (405 errors resolved with a dedicated web-page session).
-- Track identification works (matches return correctly through `shazamio_core` fingerprinting).
+- Artist metadata scraping uses a dedicated web-page session to avoid `405` responses from Shazam's endpoint.
+- Track identification matches audio through `shazamio_core` fingerprinting.
 
 ## Related projects
 
-- [TigreGotico/pyshazam](https://github.com/TigreGotico/pyshazam): the package that `xazam` was renamed from on PyPI.
 - [TigreGotico/shazam2mqtt](https://github.com/TigreGotico/shazam2mqtt): a Dockerized bridge that uses `xazam` to identify music from a microphone and publish results to MQTT.
 
 ## Documentation
 
 - [docs/usage.md](docs/usage.md): library usage and error handling
-- [docs/cli.md](docs/cli.md): command-line reference
 - [docs/api.md](docs/api.md): reverse-engineered Shazam API reference
 - [docs/architecture.md](docs/architecture.md): internal design and data flow
 - [docs/dataset.md](docs/dataset.md): data products and their suitability for publication

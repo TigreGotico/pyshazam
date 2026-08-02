@@ -4,11 +4,11 @@
 
 ```
 xazam/
-├── __init__.py      # Public exports: ShazamClient, ShazamScraper, ShazamTransport, Track, Artist
+├── __init__.py      # Public exports: ShazamClient, ShazamScraper, ShazamTransport, RecognitionResult, Track, ...
 ├── client.py        # ShazamClient — high-level track identification
 ├── scraper.py       # ShazamScraper — artist name resolution + catalog search
 ├── transport.py     # ShazamTransport — aiohttp sessions, header generation, request helpers
-└── models.py        # Track, Artist dataclasses
+└── models.py        # RecognitionResult, Track, and supporting dataclasses
 ```
 
 ## Data Flow: Track Identification
@@ -105,20 +105,17 @@ The transport exposes two helpers:
 
 ## Models
 
-```python
-@dataclass
-class Artist:
-    id: str
-    name: str
+`models.py` defines a `RecognitionResult` wrapping a `Track`, plus supporting
+dataclasses for the nested parts of a Shazam response: `TrackImage`,
+`TrackShare`, `TrackHub`, `HubProvider`, `TrackSection`, `SectionMetaPage`,
+and `TrackMatch`. Each dataclass has a `from_dict()` classmethod that parses
+the raw Shazam JSON, and `Track` adds convenience properties (`cover_art`,
+`apple_music_url`, `spotify_uri`, `lyrics`, `metadata_table`,
+`related_videos`) on top of the parsed fields.
 
-@dataclass
-class Track:
-    id: str
-    title: str
-    artist: Optional[Artist] = None
-```
-
-These are lightweight value objects. The library currently returns raw dicts from the API. The dataclasses are reserved for future typed wrappers.
+`identify()` returns a typed `RecognitionResult`. `identify_track()` still
+returns the raw dict for backward compatibility. See [`usage.md`](usage.md#model-reference)
+for the full field reference.
 
 ## Testing Strategy
 
