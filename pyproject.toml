@@ -24,8 +24,8 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/TigreGotico/xazam"
-Repository = "https://github.com/TigreGotico/xazam"
+Homepage = "https://github.com/LeMetadatarr/xazam"
+Repository = "https://github.com/LeMetadatarr/xazam"
 
 [tool.setuptools]
 include-package-data = true

@@ -167,4 +167,4 @@ All models expose `.from_dict(raw)` for manual parsing and are plain
 `@dataclass` objects with sensible defaults.
 
 ---
-[Home](README.md) · [CLI Reference →](cli.md)
+[Home](README.md) · [API Reference →](api.md)
