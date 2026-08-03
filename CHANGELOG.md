@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.1.3a3](https://github.com/LeMetadatarr/xazam/tree/0.1.3a3) (2026-08-03)
+
+[Full Changelog](https://github.com/LeMetadatarr/xazam/compare/0.1.3a2...0.1.3a3)
+
+**Merged pull requests:**
+
+- ci: grant conventional-label workflow write permissions [\#9](https://github.com/LeMetadatarr/xazam/pull/9) ([JarbasAl](https://github.com/JarbasAl))
+
 ## [0.1.3a2](https://github.com/LeMetadatarr/xazam/tree/0.1.3a2) (2026-08-02)
 
 [Full Changelog](https://github.com/LeMetadatarr/xazam/compare/0.1.3a1...0.1.3a2)
